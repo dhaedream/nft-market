@@ -1,15 +1,20 @@
+
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.4;
+// pragma solidity ^0.8.4;
+
+pragma solidity >=0.4.22 <0.9.0;
+
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 contract NFT is ERC721URIStorage {
+    //uninitialized + starting at default value in solidity. ZERO!
     uint public tokenCount ;
     //called once
     //call constructor on inhereted erc contract
     //erc args > name of nft + Symbol
-    constructor() ERC721("DApp NFT", "DAPP") {};
+    constructor() ERC721("DApp NFT", "DAPP"){}
 
     //functuion to mint new nfts
     //token uri is location on ipfs
@@ -22,7 +27,7 @@ contract NFT is ERC721URIStorage {
         //args are sender + id(corresponds w tokenCount)
         _safeMint(msg.sender, tokenCount);
         //set metadata, args = id + location
-        _setTokenURI(tokenCount, _tokenURI);
+        _setTokenURI(tokenCount, _tokenUri);
         //return id
         return(tokenCount);
     }
