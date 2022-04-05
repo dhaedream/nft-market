@@ -37,6 +37,7 @@ contract Marketplace is ReentrancyGuard {
         uint tokenId,
         uint price,
         address indexed seller,
+        //we will target indexed items to display fromt end
         address indexed buyer
     );
 
