@@ -3,9 +3,17 @@ import "./App.css";
 import { useState } from "react";
 //connects blockxhain via metamask
 import { ethers } from "ethers";
+//import smart contracts
+import MarketplaceAbi from "../contractsData/Marketplace.json";
+import MarketplaceAddress from "../contractsData/Marketplace-address.json";
+import NFTAbi from "../contractsData/NFT.json";
+import NFTAddress from "../contractsData/NFT-address.json";
 
 function App() {
   const [account, setAccount] = useState(null);
+  //store the state of our contract
+  const [nft, setNFT] = useState({});
+  const [marketplace, setMarketplace] = useState({});
 
   // MetaMask Login/Connection
   const web3Handler = async () => {
