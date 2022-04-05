@@ -10,6 +10,10 @@ import NFTAbi from "../contractsData/NFT.json";
 import NFTAddress from "../contractsData/NFT-address.json";
 
 function App() {
+  //keep track of when app is loading data from blockchain
+  // will be set back to dalse when contract is finished loading
+  const [loading, setLoading] = useState(true);
+
   const [account, setAccount] = useState(null);
   //store the state of our contract
   const [nft, setNFT] = useState({});
