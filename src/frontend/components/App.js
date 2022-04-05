@@ -20,7 +20,23 @@ function App() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     // Set signer
     const signer = provider.getSigner();
+
+    loadContracts(signer);
   };
+
+  const loadContracts = async (signer) => {
+    // Get deployed copies of contracts
+    const marketplace = new ethers.Contract(
+      MarketplaceAddress.address,
+      MarketplaceAbi.abi,
+      signer
+    );
+    setMarketplace(marketplace);
+    const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer);
+    setNFT(nft);
+    setLoading(false);
+  };
+
   return (
     <div>
       <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
